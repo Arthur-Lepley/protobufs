@@ -89,8 +89,6 @@ message LEOConfig {
     uint32			N		= 1;		// Satellite catalog number from tle:l1:2..6
   }
 
-  message TLEAction {
-
   oneof action {
 	    TLEAddReplace addreplace = 1;
 	    TLERemove remove = 2;

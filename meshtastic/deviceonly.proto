@@ -8,6 +8,7 @@ import "meshtastic/config.proto";
 import "meshtastic/localonly.proto";
 import "meshtastic/mesh.proto";
 import "meshtastic/telemetry.proto";
+import "meshtastic/leo.proto";
 import "nanopb.proto";
 
 option csharp_namespace = "Meshtastic.Protobufs";
@@ -248,6 +249,20 @@ message NodeDatabase {
    * New lite version of NodeDB to decrease memory footprint
    */
   repeated NodeInfoLite nodes = 2 [(nanopb).callback_datatype = "std::vector<meshtastic_NodeInfoLite>"];
+}
+
+message TLEDatabase {
+  /*
+   * A version integer used to invalidate old save files when we make
+   * incompatible changes This integer is set at build time and is private to
+   * NodeDB.cpp in the device code.
+   */
+  uint32 version = 1;
+
+  /*
+   * New lite version of NodeDB to decrease memory footprint
+   */
+  repeated TLE tles = 2 [(nanopb).callback_datatype = "std::vector<meshtastic_TLE>"];
 }
 
 /*

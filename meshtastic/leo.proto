@@ -17,7 +17,7 @@ option swift_prefix = "";
 message TLE
 {
 	
-    uint32			N		= 1;		// Satellite catalog number from tle:l1:2..6
+  uint32			N		= 1;		// Satellite catalog number from tle:l1:2..6
 	uint32   		YE		= 2;		// Epoch year from tle:l1:18..19    														year
 	float 			TE		= 3;		// Epoch (day of the year and fractional portion of the day) from tle:l1:20..31    			days
 	float 			IN		= 4;		// Inclination (degrees) from tle:l2:8..15
@@ -50,6 +50,16 @@ message TLE
 	 * @brief Unix-epoch time of the last update of the TLE (for the TLE DB)
 	 */
 	optional uint32 last_update_time = 15;
+
+  /*
+    * Satellite antenna aperture (in degree)
+    */ 
+  optional uint32 aperture = 16;
+
+  /*
+    * Satellite antenna gain (in dBi)
+    */ 
+  optional float gain = 17;
 }
 
 /*
@@ -69,16 +79,6 @@ message LEOConfig {
      * TLE of a satellite to add or to replace
      */
     TLE tle = 2;
-
-    /*
-     * Satellite antenna aperture (in degree)
-     */ 
-    optional uint32 aperture = 3;
-
-    /*
-     * Satellite antenna gain (in dBi)
-     */ 
-    optional float gain = 4;
   }
 
   message TLERemove {
